@@ -38,28 +38,32 @@ nav {
 .closable-area ul a {
   padding: 20px 0.5px;
   text-decoration: none;
-  color: var(--background-secondary);
+  color: var(--background-secondary) !important;
+  cursor: pointer;
 }
 .closable-area ul {
   list-style: none;
 }
 
-.food-card {
+.food-card,
+.category-card {
   position: relative;
 }
-.food-card:hover .overlay {
+.food-card:hover .overlay,
+.category-card:hover .overlay {
   top: 0;
 }
-.food-card .overlay {
+.food-card .overlay,
+.category-card .overlay {
   background-color: var(--overlay);
   padding-left: 20px;
   font-size: 2rem;
   position: absolute;
   top: 100%;
   left: 0;
-  width: 100%;
+  right: 0;
   height: 100%;
   display: flex;
   align-items: center;
-  transition: top 0.5s ease-in-out;
+  transition: top 0.8s ease-in-out;
 }
