@@ -23,7 +23,10 @@ nav {
   /* left: 0; */
 }
 .nav-icon .fa-bars,
-.nav-icon .fa-xmark {
+.nav-icon .fa-xmark,
+.food-card,
+.ingredient-card,
+.category-card {
   cursor: pointer;
 }
 .shown-area {
@@ -66,4 +69,9 @@ nav {
   display: flex;
   align-items: center;
   transition: top 0.8s ease-in-out;
+}
+
+.recepie-card,
+.tags {
+  list-style-type: none;
 }
