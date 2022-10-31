@@ -47,6 +47,10 @@ burgerIcon.addEventListener("click", function () {
 // Init api call
 const mainApi = new ApiController();
 
+window.addEventListener("load", async function () {
+  assignMealsToHtml(await createMealsList("co"));
+});
+
 function closeAndOpenNav() {
   if (isHidden) {
     isHidden = false;
