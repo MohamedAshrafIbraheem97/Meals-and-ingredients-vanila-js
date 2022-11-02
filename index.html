@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Daniels</title>
+    <title>Yummy</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -105,6 +105,90 @@
     <section class="meal-details my-5 visually-hidden">
       <div class="container">
         <div class="row text-white"></div>
+      </div>
+    </section>
+    <section class="contact visually-hidden">
+      <div class="container w-50">
+        <h2 class="text-center text-white mb-5">Contact Us</h2>
+        <form action="" class="" novalidate>
+          <div class="row gy-2">
+            <div class="col-12 col-md-6">
+              <input
+                type="text"
+                class="form-control w-100 m-auto bg-transparent text-white"
+                placeholder="Your name ..."
+                id="personName"
+              />
+              <div class="invalid-feedback alert alert-danger text-center">
+                Special Characters and Numbers not allowed
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <input
+                type="email"
+                placeholder="Your Email ..."
+                class="form-control w-100 m-auto bg-transparent text-white"
+                id="personEmail"
+              />
+              <div class="invalid-feedback alert alert-danger text-center">
+                Enter valid email. *Ex: xxx@yyy.zzz
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <input
+                type="text"
+                placeholder="Your Phone ..."
+                class="form-control w-100 m-auto bg-transparent text-white"
+                id="personPhone"
+              />
+              <div class="invalid-feedback alert alert-danger text-center">
+                Enter valid Phone Number
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <input
+                type="text"
+                placeholder="Your Age ..."
+                class="form-control w-100 m-auto bg-transparent text-white"
+                id="personAge"
+              />
+              <div class="invalid-feedback alert alert-danger text-center">
+                Enter valid Age
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <input
+                type="password"
+                placeholder="Your Password ..."
+                class="form-control w-100 m-auto bg-transparent text-white"
+                id="personPassword"
+              />
+              <div class="invalid-feedback alert alert-danger text-center">
+                Enter valid password *Minimum eight characters, at least one
+                letter and one number:*
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <input
+                type="password"
+                placeholder="Re-enter password ..."
+                class="form-control w-100 m-auto bg-transparent text-white"
+                id="personRePassword"
+              />
+              <div class="invalid-feedback alert alert-danger text-center">
+                Enter valid Repassword
+              </div>
+            </div>
+            <div class="text-center">
+              <input
+                type="submit"
+                value="Submit"
+                class="btn btn-outline-danger"
+                id="submitBtn"
+              />
+            </div>
+          </div>
+        </form>
       </div>
     </section>
     <script src="js/jquery-3.6.0.min.js"></script>
