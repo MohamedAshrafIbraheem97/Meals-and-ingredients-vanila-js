@@ -1,9 +1,8 @@
 import { ApiController } from "./ApiController.js";
 import { Meal } from "./Meal.js";
-import { queryTypesEnum } from "./enums.js";
 import { Category } from "./Category.js";
 import { Ingredient } from "./Ingredient.js";
-import { Validation } from "../Validation.js";
+import { Validation } from "./Validation.js";
 
 // navbar
 const nav = document.querySelector("nav");
