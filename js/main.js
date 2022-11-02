@@ -3,6 +3,7 @@ import { Meal } from "./Meal.js";
 import { queryTypesEnum } from "./enums.js";
 import { Category } from "./Category.js";
 import { Ingredient } from "./Ingredient.js";
+import { Validation } from "../Validation.js";
 
 // navbar
 const nav = document.querySelector("nav");
@@ -25,13 +26,21 @@ const foodSection = document.querySelector(".food .container .row");
 const categoriesSection = document.querySelector(".categories .container .row");
 const mealDetails = document.querySelector(".meal-details");
 const ingredientSection = document.querySelector(".ingredients");
+const contactSection = document.querySelector(".contact");
 let foodCard = "";
 let categoryCard = "";
 let ingredientCard = "";
 
-// search inputs
+// inputs
 const searchByName = document.querySelector("#searchByName");
 const searchByFirstLetter = document.querySelector("#searchByFirstLetter");
+const personName = document.querySelector("#personName");
+const personEmail = document.querySelector("#personEmail");
+const personPhone = document.querySelector("#personPhone");
+const personAge = document.querySelector("#personAge");
+const personPassword = document.querySelector("#personPassword");
+const personRePassword = document.querySelector("#personRePassword");
+const submitBtn = document.querySelector("#submitBtn");
 
 let isHidden = true;
 nav.style.left = `-${navClosableAreaOffset}px`;
@@ -44,8 +53,12 @@ burgerIcon.addEventListener("click", function () {
   closeAndOpenNav();
 });
 
-// Init api call
+// Init api call to fill in app with data
 const mainApi = new ApiController();
+
+window.addEventListener("load", async function () {
+  assignMealsToHtml(await createMealsList("co"));
+});
 
 function closeAndOpenNav() {
   if (isHidden) {
@@ -272,7 +285,6 @@ function assignMealsToHtml(list) {
       </div>            
         `;
   }
-
   foodSection.innerHTML = temp;
 
   foodCard = document.querySelectorAll(".food-card");
@@ -489,6 +501,7 @@ search.addEventListener("click", () => {
   hideCategoriesSection();
   hideMealDetailsSection();
   hideIngredientSection();
+  hideContacttSection();
   closeAndOpenNav();
 });
 
@@ -504,6 +517,8 @@ categories.addEventListener("click", async function () {
   hideSearchSection();
   hideFoodSection();
   hideIngredientSection();
+  hideContacttSection();
+
   assignCategoriesToHtml(await createCatgoriesList());
   closeAndOpenNav();
 });
@@ -513,6 +528,8 @@ area.addEventListener("click", async function () {
   showFoodSection();
   hideSearchSection();
   hideIngredientSection();
+  hideContacttSection();
+
   assignAreasToHtml(await createAreasList());
   closeAndOpenNav();
 });
@@ -522,9 +539,21 @@ ingreditent.addEventListener("click", async function () {
   hideFoodSection();
   hideSearchSection();
   showIngredientSection();
+  hideContacttSection();
   assignIngredientsToHtml(await createIngredientsList());
   closeAndOpenNav();
 });
+
+contactUs.addEventListener("click", async function () {
+  isSubmitBtnActivated();
+  hideCategoriesSection();
+  hideFoodSection();
+  hideSearchSection();
+  hideIngredientSection();
+  showContactSection();
+  closeAndOpenNav();
+});
+
 function hideSearchSection() {
   seachSection.classList.add("visually-hidden");
 }
@@ -554,6 +583,82 @@ function hideIngredientSection() {
 }
 function showIngredientSection() {
   ingredientSection.classList.remove("visually-hidden");
+}
+function hideContacttSection() {
+  contactSection.classList.add("visually-hidden");
+}
+function showContactSection() {
+  contactSection.classList.remove("visually-hidden");
+}
+
+// validation
+
+let validName = false,
+  validEmail = false,
+  validPhone = false,
+  validAge = false,
+  validPassword = false,
+  ReValidatePassword = false;
+
+personName.addEventListener("input", (e) => {
+  validName = Validation.validateName(e.target.value);
+  validName
+    ? Validation.showIsValid(personName)
+    : Validation.showIsInValid(personName);
+  isSubmitBtnActivated();
+});
+personEmail.addEventListener("input", (e) => {
+  validEmail = Validation.validateEmail(e.target.value);
+  validEmail
+    ? Validation.showIsValid(personEmail)
+    : Validation.showIsInValid(personEmail);
+  isSubmitBtnActivated();
+});
+personPhone.addEventListener("input", (e) => {
+  validPhone = Validation.validatePhone(e.target.value);
+  validPhone
+    ? Validation.showIsValid(personPhone)
+    : Validation.showIsInValid(personPhone);
+  isSubmitBtnActivated();
+});
+personAge.addEventListener("input", (e) => {
+  validAge = Validation.validateAge(e.target.value);
+  validAge
+    ? Validation.showIsValid(personAge)
+    : Validation.showIsInValid(personAge);
+  isSubmitBtnActivated();
+});
+personPassword.addEventListener("input", (e) => {
+  validPassword = Validation.validatePassword(e.target.value);
+  validPassword
+    ? Validation.showIsValid(personPassword)
+    : Validation.showIsInValid(personPassword);
+  isSubmitBtnActivated();
+});
+personRePassword.addEventListener("input", (e) => {
+  ReValidatePassword = Validation.validateRePassword(
+    personPassword.value,
+    e.target.value
+  );
+  ReValidatePassword
+    ? Validation.showIsValid(personRePassword)
+    : Validation.showIsInValid(personRePassword);
+  isSubmitBtnActivated();
+});
+
+function isSubmitBtnActivated() {
+  if (
+    validName &&
+    validEmail &&
+    validPhone &&
+    validAge &&
+    validPassword &&
+    ReValidatePassword
+  ) {
+    submitBtn.classList.remove("disabled");
+  } else {
+    submitBtn.classList.add("disabled");
+  }
 }
 
 // abstraction
